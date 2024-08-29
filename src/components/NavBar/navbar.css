@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+* {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fcfcfc;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar {
+  height: 60px;
+  background-color: #920000;
+  position: relative;
+}
+
+.menu-icon svg {
+  width: 35px;
+}
+
+nav button {
+  border: none;
+  padding: 5px  10px;
+  color: #920000;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+#iniciarBtn {
+  margin-right: -35px;
+}
+
+#iniciarBtn:hover {
+  cursor: pointer;
+
+}
+
+
+#registrarBtn:hover {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logo {
+    color: white;
+}
+
+.menu-icon {
+  display: none;
+}
+
+.nav-elements ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.nav-elements ul li:not(:last-child) {
+  margin-right: 60px;
+}
+
+.nav-elements ul a {
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-elements ul a.active {
+  color: white;
+  font-weight: 600;
+  position: relative;
+}
+
+.nav-elements ul a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #574c4c;
+}
+
+.registerDiv {
+  display: flex;
+  flex-direction: column;
+}
+.registerDiv div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+#infoPlayer input{
+  width: 85px;
+  margin: 3.3px;
+}
+
+
+@media (max-width: 768px) {
+  .nav-elements ul li:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav-elements {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: #920000;
+    width: 0px;
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+  }
+
+  .nav-elements.active {
+    width: 270px;
+  }
+
+  .nav-elements ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-elements ul li {
+    margin-right: unset;
+    margin-top: 22px;
+  }
+}
+
+#contenedor-popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 65vh;
+  margin: 0;
+}
+h1 {
+  text-align: center;
+}
+.ventana-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 120px 180px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+              0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.contenido-popup {
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.tutorial{
+  text-align: center;
+}
+
+.cerrarBtn {
+  background-color: white;
+  margin-top: 20px;
+}
+.contenido-popup input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.finishBtn {
+  background-color: #3fb91a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+} 

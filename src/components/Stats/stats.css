@@ -1,0 +1,102 @@
+.playerContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.playerText {
+    display: flex;
+    flex-direction: row;
+}
+.present {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.present p {
+    font-size: 40px;
+}
+.detailCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 50px;
+    margin-left: 20px;
+}
+
+.moreDetailCont {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+}
+.statsColumn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.statsColumn h3{
+    margin-right: 10px; 
+}
+.statsColumn div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(238, 238, 238);
+    padding: 2  0px;
+    width: 150px;
+    text-align: center;
+}
+.statsDivTitle {
+    font-size: 20px;
+    font-weight: bold;
+}
+.statsDivInfo {
+    font-size: 20px;
+    border-radius: 100%;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+.lowRow p {
+    margin-bottom: 25px;
+}
+.lowRow {
+    border-bottom: solid 1px red transparent;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-bottom: 20px;
+}
+.topRow div {
+    margin-top: 50px;
+    border-top: 6px solid #920000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#file-upload::file-selector-button {
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+}
+
+#file-upload {
+    color: transparent;
+}

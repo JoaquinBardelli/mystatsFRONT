@@ -1,0 +1,51 @@
+.agregarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+form {
+    width: 90%;
+}
+.formStatsContainer {
+    display: flex;
+    flex-direction: column;
+}
+input {
+    padding: 5px 20px;
+    margin: 10px;
+}
+.formAgregarBtn {
+    margin: 10px;
+    background-color: #007BFF; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Animación suave al cambiar el color de fondo */
+}
+.formAgregarBtn:hover {
+    background-color: #0056b3; /* Color de fondo más oscuro al hacer hover */
+}
+.formAgregarBtn:active {
+    background-color: #004080; /* Color de fondo más oscuro al hacer clic */
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Para Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input {
+    padding: 5px 20px;
+    margin: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
