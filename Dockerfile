@@ -1,5 +1,5 @@
 # Etapa 1: Construcción y pruebas (test)
-FROM node:16-alpine AS build
+FROM node:18-alpine AS build
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -20,7 +20,7 @@ COPY . .
 RUN npm run test -- --watchAll=false --ci --reporters=default --passWithNoTests
 
 # Etapa 2: Construcción de la aplicación React
-FROM node:16-alpine AS production
+FROM node:18-alpine AS production
 
 # Establecer el directorio de trabajo para la producción
 WORKDIR /app
