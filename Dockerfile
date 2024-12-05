@@ -1,5 +1,4 @@
-# Usar una imagen base con Node.js
-FROM node:18-alpine
+FROM node:18-bullseye
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -8,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Instalar todas las dependencias
-RUN npm install --legacy-peer-deps
+RUN npm install --legacy-peer-deps --include=dev
 
 # Verificar que react-scripts esté instalado
 RUN npm list react-scripts
