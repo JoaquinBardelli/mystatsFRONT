@@ -17,7 +17,12 @@ body {
   align-items: center;
   height: 100%;
 }
-
+.formBtnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .navbar {
   height: 60px;
   background-color: #920000;
@@ -169,6 +174,9 @@ h1 {
 }
 
 .contenido-popup {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   text-align: center;
 }
 

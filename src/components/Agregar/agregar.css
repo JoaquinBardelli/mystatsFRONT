@@ -1,51 +1,137 @@
 .agregarContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 form {
-    width: 90%;
+  width: 90%;
 }
 .formStatsContainer {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 input {
-    padding: 5px 20px;
-    margin: 10px;
+  padding: 5px 20px;
+  margin: 10px;
 }
 .formAgregarBtn {
-    margin: 10px;
-    background-color: #007BFF; /* Color de fondo */
-    color: white; /* Color del texto */
-    padding: 10px 20px; /* Espaciado interno */
-    border: none; /* Sin bordes */
-    border-radius: 5px; /* Bordes redondeados */
-    font-size: 16px; /* Tamaño de la fuente */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: background-color 0.3s ease; /* Animación suave al cambiar el color de fondo */
+  margin: 10px;
+  background-color: #007bff; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin bordes */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease; /* Animación suave al cambiar el color de fondo */
 }
 .formAgregarBtn:hover {
-    background-color: #0056b3; /* Color de fondo más oscuro al hacer hover */
+  background-color: #0056b3; /* Color de fondo más oscuro al hacer hover */
 }
 .formAgregarBtn:active {
-    background-color: #004080; /* Color de fondo más oscuro al hacer clic */
+  background-color: #004080; /* Color de fondo más oscuro al hacer clic */
 }
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Para Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.agregarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px; /* Agrega algo de espacio alrededor de todo el formulario */
+}
+
+form {
+  width: 100%; /* Usar 100% del ancho del contenedor */
+  max-width: 1200px; /* Máximo ancho para evitar que el formulario se estire demasiado */
+}
+
+.formStatsContainer {
+  margin-bottom: 20px;
+}
+
+.inputRow {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los inputs se ajusten en múltiples filas si es necesario */
+  gap: 20px; /* Aumentamos el espacio entre los inputs */
+  margin-bottom: 15px; /* Espacio extra entre filas */
+}
+
+.inputContainer {
+  flex: 1 1 22%; /* Cada input ocupará un 22% del espacio, ajustando según el tamaño */
+  min-width: 200px; /* Establece un tamaño mínimo para evitar que los inputs sean demasiado pequeños */
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 15px;
 }
 
 input {
-    padding: 5px 20px;
-    margin: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+  width: 100%; /* Hace que los inputs ocupen el 100% del contenedor de su clase */
+  padding: 10px; /* Agregamos más padding para que el texto no esté tan pegado a los bordes */
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total del input */
+}
+
+.formAgregarBtn {
+  margin: 20px auto 0; /* Centra el botón y agrega más margen arriba */
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block; /* Hace que el botón sea de bloque para centrarlo */
+}
+
+.formAgregarBtn:hover {
+  background-color: #0056b3;
+}
+
+.formAgregarBtn:active {
+  background-color: #004080;
+}
+.labelTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  text-decoration: underline #920000;
+}
+select {
+  width: 100%; /* Hace que el select ocupe el 100% del contenedor */
+  padding: 10px; /* Agregamos más padding para que el texto no esté tan pegado a los bordes */
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total del select */
+  margin-bottom: 10px; /* Espacio abajo del campo */
+  margin-top: 10px;
+  background-color: white; /* Fondo blanco */
+  font-size: 14px; /* Asegura que la fuente sea legible */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el select */
+}
+
+select:focus {
+  border-color: #007bff; /* Cambia el color del borde cuando el select está en foco */
+  outline: none; /* Elimina el contorno predeterminado en el enfoque */
+}
+
+select option {
+  padding: 10px; /* Asegura que las opciones tengan suficiente espacio */
 }

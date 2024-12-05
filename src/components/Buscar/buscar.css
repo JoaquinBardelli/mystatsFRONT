@@ -1,14 +1,146 @@
+/* Estilos Generales */
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  font-family: "Arial", sans-serif;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 1.5rem;
+  color: #555;
+}
 
 .filtrosContainer {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
+
 .filtrosContainer button {
-    border-radius: 50px;
-    border: none;
-    background-color: white;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 12px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 .filtrosContainer button:hover {
-    background-color: #f8f9fa;
+  background-color: #f8f9fa;
+  transform: translateY(-3px);
+}
+
+.filtrosContainer button:active {
+  transform: translateY(1px);
+}
+
+/* Estilos para la tabla de partidos */
+.partidosContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 columnas */
+  gap: 20px;
+  padding: 0 20px;
+  justify-items: center;
+}
+
+.partidoItem {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.partidoItem:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.partidoItem p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+hr {
+  border: 1px solid #e0e0e0;
+  margin-top: 20px;
+}
+
+/* Estilos para la paginación */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.partidoItem p:nth-of-type(1) {
+  font-size: 1.5rem; /* Aumentar el tamaño */
+  font-weight: 600; /* Negrita */
+  color: #007bff; /* Color llamativo */
+  background-color: #f1f9ff; /* Fondo sutil */
+  border-radius: 50%; /* Redondear el fondo */
+  padding: 10px 20px; /* Espaciado alrededor del número */
+  display: inline-block; /* Para que se ajusten al contenido */
+  margin-bottom: 15px; /* Separar del siguiente contenido */
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.2); /* Sombra suave */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+.partidoItem p:nth-of-type(1):hover {
+  transform: scale(1.1); /* Aumentar de tamaño al pasar el mouse */
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4); /* Sombra más intensa */
+}
+
+.partidoItem p {
+  font-size: 1rem;
+  color: #333;
+  margin: 5px 0;
+}
+
+.pagination-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pagination-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+.pagination-btn:active {
+  transform: translateY(1px);
+}
+
+.pagination-btn:disabled {
+  background-color: #d6d6d6;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-size: 1rem;
+  color: #555;
 }
