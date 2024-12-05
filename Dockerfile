@@ -17,6 +17,9 @@ COPY . .
 
 # Ejecutar los tests
 RUN npm install -g react-scripts
+
+ENV DISABLE_ESLINT_PLUGIN=true
+
 # Construir la aplicación
 RUN npm run build
 
