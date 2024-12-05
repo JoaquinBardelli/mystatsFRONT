@@ -23,9 +23,12 @@ jobs:
 
       # Paso 3: Iniciar sesión en Docker Hub
       # Paso 3: Iniciar sesión en Docker Hub
-      - name: Log in to Docker Hub (Basic Test)
+     # Paso de depuración (solo para revisar si los secretos están correctamente tomados)
+      - name: Show Docker username and password
         run: |
-          echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          echo "Docker username: ${{ secrets.DOCKER_USERNAME }}"
+          echo "Docker password: ${{ secrets.DOCKER_PASSWORD }} (hidden)"
+
 
 
       # Paso 4: Construir y ejecutar los tests en la imagen Docker
