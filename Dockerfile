@@ -7,8 +7,8 @@ WORKDIR /app
 # Copiar los archivos de configuración (package.json, package-lock.json)
 COPY package*.json ./
 
-# Instalar todas las dependencias (tanto de desarrollo como de producción)
-RUN npm install --legacy-peer-deps
+# Instalar todas las dependencias (incluidas las de desarrollo)
+RUN npm install --legacy-peer-deps --include=dev
 
 # Verificar que react-scripts esté instalado correctamente
 RUN npm list react-scripts
