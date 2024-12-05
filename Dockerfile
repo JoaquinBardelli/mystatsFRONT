@@ -7,8 +7,8 @@ WORKDIR /app
 # Copiar los archivos de configuración (package.json, package-lock.json)
 COPY package*.json ./
 
-# Instalar las dependencias de desarrollo y producción
-RUN npm install
+# Instalar todas las dependencias (tanto de desarrollo como de producción)
+RUN npm install --legacy-peer-deps
 
 # Copiar el resto de los archivos del proyecto
 COPY . .
@@ -22,11 +22,11 @@ FROM node:16-alpine AS production
 # Establecer el directorio de trabajo para la producción
 WORKDIR /app
 
-# Copiar los archivos de configuración
+# Copiar los archivos de configuración (package.json, package-lock.json)
 COPY package*.json ./
 
 # Instalar solo las dependencias de producción
-RUN npm install --only=production
+RUN npm install --only=production --legacy-peer-deps
 
 # Copiar la aplicación construida desde la etapa anterior
 COPY --from=build /app/build /app/build
