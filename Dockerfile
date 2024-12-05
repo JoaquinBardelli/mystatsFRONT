@@ -1,41 +1,32 @@
-# Etapa 1: Construcción y pruebas (test)
-FROM node:18-alpine AS build
+# Usar una imagen base con Node.js
+FROM node:18-alpine
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copiar los archivos de configuración (package.json, package-lock.json)
+# Copiar los archivos de configuración del proyecto
 COPY package*.json ./
 
-# Instalar todas las dependencias (incluidas las de desarrollo)
-RUN npm install --legacy-peer-deps --include=dev
+# Instalar todas las dependencias
+RUN npm install --legacy-peer-deps
 
-# Verificar que react-scripts esté instalado correctamente
+# Verificar que react-scripts esté instalado
 RUN npm list react-scripts
 
-# Copiar el resto de los archivos del proyecto
+# Copiar el resto del código fuente al contenedor
 COPY . .
 
 # Ejecutar los tests
 RUN npm run test -- --watchAll=false --ci --reporters=default --passWithNoTests
 
-# Etapa 2: Construcción de la aplicación React
-FROM node:18-alpine AS production
+# Construir la aplicación
+RUN npm run build
 
-# Establecer el directorio de trabajo para la producción
-WORKDIR /app
+# Instalar un servidor estático para servir la aplicación React
+RUN npm install -g serve
 
-# Copiar los archivos de configuración (package.json, package-lock.json)
-COPY package*.json ./
-
-# Instalar solo las dependencias de producción
-RUN npm install --only=production --legacy-peer-deps
-
-# Copiar la aplicación construida desde la etapa anterior
-COPY --from=build /app/build /app/build
-
-# Exponer el puerto 3000 (puerto por defecto de React)
+# Exponer el puerto 3000 para la aplicación
 EXPOSE 3000
 
 # Comando para iniciar la aplicación en producción
-CMD ["npx", "serve", "-s", "build", "-l", "3000"]
+CMD ["serve", "-s", "build", "-l", "3000"]
