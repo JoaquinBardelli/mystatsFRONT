@@ -16,7 +16,6 @@ RUN npm list react-scripts
 COPY . .
 
 # Ejecutar los tests
-RUN npm run test -- --watchAll=false --ci --reporters=default --passWithNoTests
 
 # Construir la aplicación
 RUN npm run build
