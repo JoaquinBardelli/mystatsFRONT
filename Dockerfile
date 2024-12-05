@@ -10,6 +10,9 @@ COPY package*.json ./
 # Instalar todas las dependencias (tanto de desarrollo como de producción)
 RUN npm install --legacy-peer-deps
 
+# Verificar que react-scripts esté instalado correctamente
+RUN npm list react-scripts
+
 # Copiar el resto de los archivos del proyecto
 COPY . .
 
