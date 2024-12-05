@@ -16,7 +16,7 @@ RUN npm list react-scripts
 COPY . .
 
 # Ejecutar los tests
-
+RUN npm install -g react-scripts
 # Construir la aplicación
 RUN npm run build
 
