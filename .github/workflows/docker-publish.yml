@@ -46,10 +46,3 @@ jobs:
           file: ./Dockerfile
           push: true  # Esto subirá la imagen a Docker Hub
           tags: ${{ secrets.DOCKER_USERNAME }}/mi-app-react:latest
-
-      # Paso 6: (Opcional) Desplegar a un servidor (conexión SSH o similar)
-      - name: Deploy to server
-        run: |
-          ssh user@server_ip "docker pull ${{ secrets.DOCKER_USERNAME }}/mi-app-react:latest"
-          ssh user@server_ip "docker stop mi-app-react || true && docker rm mi-app-react || true"
-          ssh user@server_ip "docker run -d -p 80:3000 --name mi-app-react ${{ secrets.DOCKER_USERNAME }}/mi-app-react:latest"
