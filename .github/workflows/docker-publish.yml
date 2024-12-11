@@ -1,48 +1,67 @@
-name: CI/CD with Docker
+name: Docker Frontend
 
 on:
-  push:
-    branches:
-      - main  # Rama en la que se ejecutará el flujo de trabajo
   pull_request:
-    branches:
-      - main  # Rama en la que se ejecutará el flujo de trabajo
+    branches: [ "main" ] # Puedes agregar otras ramas como en el back
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
 
     steps:
       # Paso 1: Clonar el repositorio
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      # Paso 2: Configurar Docker
+      # Paso 2: Instalar cosign
+      - name: Install cosign
+        uses: sigstore/cosign-installer@59acb6260d9c0ba8f4a2f9d9b48431a222b68e20 # v3.5.0
+        with:
+          cosign-release: 'v2.2.4'
+
+      # Paso 3: Configurar Docker Buildx
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
 
-      # Paso 3: Iniciar sesión en Docker Hub
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v2
+      # Paso 4: Iniciar sesión en Docker Registry
+      - name: Log into Docker Registry ${{ env.REGISTRY }}
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Paso 4: Construir y ejecutar los tests en la imagen Docker
-      - name: Build and test Docker image
-        uses: docker/build-push-action@v3
+      # Paso 5: Extraer metadatos de Docker
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
-          context: .
-          file: ./Dockerfile
-          push: false  # No sube la imagen aún
-          tags: my-app-react:test  # Usamos un tag para tests
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      # Paso 5: Si los tests pasan, construir la imagen final para producción
-      - name: Build and push Docker image for production
-        if: success()  # Solo si los tests pasaron
-        uses: docker/build-push-action@v3
+      # Paso 6: Construir y subir la imagen de Docker
+      - name: Build and push Docker image
+        id: build-and-push
+        uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
-          context: .
-          file: ./Dockerfile
-          push: true  # Esto subirá la imagen a Docker Hub
-          tags: ${{ secrets.DOCKER_USERNAME }}/mi-app-react:latest
+          context: .  # Directorio actual (raíz del repositorio)
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          visibility: public
+
+      # Paso 7: Firmar la imagen Docker con cosign
+      - name: Sign the published Docker image
+        env:
+          TAGS: ${{ steps.meta.outputs.tags }}
+          DIGEST: ${{ steps.build-and-push.outputs.digest }}
+        run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
