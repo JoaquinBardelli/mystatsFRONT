@@ -27,9 +27,12 @@ jobs:
         with:
           node-version: '18'
 
-      # Paso 3: Instalar dependencias
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps --include=dev
+      # Paso 3: Limpiar caché y dependencias
+      - name: Clean npm cache and reinstall dependencies
+        run: |
+          npm cache clean --force
+          rm -rf node_modules package-lock.json
+          npm install --legacy-peer-deps --include=dev
 
       # Paso 4: Ejecutar tests
       - name: Run tests
