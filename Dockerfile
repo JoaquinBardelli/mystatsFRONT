@@ -1,3 +1,4 @@
+# Usar una imagen base de Node.js
 FROM node:18-bullseye
 
 # Establecer el directorio de trabajo dentro del contenedor
@@ -15,9 +16,11 @@ RUN npm list react-scripts
 # Copiar el resto del código fuente al contenedor
 COPY . .
 
-# Ejecutar los tests
 RUN npm install -g react-scripts
+# Ejecutar los tests
+RUN npm test -- --ci --runInBand --coverage
 
+# Deshabilitar ESLint si es necesario
 ENV DISABLE_ESLINT_PLUGIN=true
 
 # Construir la aplicación
