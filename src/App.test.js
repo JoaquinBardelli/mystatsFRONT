@@ -8,5 +8,5 @@ test("renders Inicio component correctly", () => {
       <Inicio />
     </Router>
   );
-  expect(screen.getByText(/personaje/i)).toBeInTheDocument();
+  expect(screen.getByText(/inicio/i)).toBeInTheDocument();
 });
