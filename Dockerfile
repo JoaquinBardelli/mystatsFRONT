@@ -18,7 +18,7 @@ COPY . .
 
 RUN npm install -g react-scripts
 # Ejecutar los tests
-RUN npm test -- --ci --runInBand --coverage
+RUN npm test -- --ci --watchAll=false --coverage
 
 # Deshabilitar ESLint si es necesario
 ENV DISABLE_ESLINT_PLUGIN=true
