@@ -3,7 +3,7 @@ name: Docker Frontend
 on:
   pull_request:
     branches: [ "main", "qa", "dev" ]
-
+    
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
