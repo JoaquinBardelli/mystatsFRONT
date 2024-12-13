@@ -29,19 +29,16 @@ ENV DISABLE_ESLINT_PLUGIN=true
 RUN npm run build
 
 # Etapa 2: Crear la imagen final minimalista
-FROM node:18-bullseye AS production
-
-# Instalar un servidor estático para servir la aplicación React
-RUN npm install -g serve
+FROM node:18-alpine AS production
 
 # Establecer el directorio de trabajo
 WORKDIR /app
 
-# Copiar solo la carpeta de construcción desde la etapa anterior
+# Copiar solo los archivos necesarios desde la etapa de construcción
 COPY --from=build /app/build ./build
 
 # Exponer el puerto 3000 para la aplicación
 EXPOSE 3000
 
 # Comando para iniciar la aplicación en producción
-CMD ["serve", "-s", "build", "-l", "3000"]
+CMD ["npx", "serve", "-s", "build", "-l", "3000"]
